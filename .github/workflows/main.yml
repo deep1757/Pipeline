@@ -52,4 +52,4 @@ jobs:
       run: |
         sudo mkdir -p /var/www/html
         sudo cp ./pipeline/app/index.html /var/www/html/
-      working-directory: ./terraform
+      working-directory: ./app

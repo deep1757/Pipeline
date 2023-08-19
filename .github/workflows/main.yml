@@ -59,4 +59,5 @@ jobs:
         sudo apt update && sudo apt install -y apache2
         sudo systemctl start apache2
         sudo systemctl enable apache2
+        echo '<h1>Hello, this is your k21 website!</h1>' | sudo tee /var/www/html/index.html
       shell: bash

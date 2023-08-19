@@ -52,9 +52,9 @@ jobs:
           
     - name: Deploy Application
       run: |
-        mkdir -p /var/www/html
-        cp ./app/index.html /var/www/html/
-      working-directory: ./
+        sudo mkdir -p /var/www/html
+        sudo cp ./app/index.html /var/www/html/
+      working-directory: ./terraform
 
     - name: Clean Up
       run: terraform destroy -auto-approve

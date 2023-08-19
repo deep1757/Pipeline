@@ -56,6 +56,7 @@ jobs:
 
     - name: Start Web Server
       run: |
-        sudo apt update && sudo apt install -y apache2
-        sudo systemctl start apache2
+        sudo apt update && sudo apt install -y httpd
+        sudo systemctl start httpd
+        sudo systemctl enable httpd
       shell: bash

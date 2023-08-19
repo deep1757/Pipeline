@@ -51,5 +51,5 @@ jobs:
     - name: Deploy Application
       run: |
         sudo mkdir -p /var/www/html
-        cp ./terraform/pipeline/app/index.html /var/www/html/
-      working-directory: ${{ github.workspace }}
+        sudo cp ./pipeline/app/index.html /var/www/html/
+      working-directory: ./terraform

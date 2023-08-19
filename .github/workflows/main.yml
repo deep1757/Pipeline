@@ -53,3 +53,9 @@ jobs:
         sudo mkdir -p /var/www/html
         sudo cp ./app/index.html /var/www/html/
       working-directory: ./
+
+    - name: Start Web Server
+      run: |
+        sudo apt update && sudo apt install -y apache2
+        sudo systemctl start apache2
+      shell: bash

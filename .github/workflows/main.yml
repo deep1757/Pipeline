@@ -12,6 +12,10 @@ jobs:
   terraform:
     name: 'Terraform'
     runs-on: ubuntu-latest
+    
+    defaults:
+      run:
+        shell: bash
 
     steps:
     - name: Checkout
@@ -47,10 +51,5 @@ jobs:
     - name: Deploy Application
       run: |
         sudo mkdir -p /var/www/html
-        # Use the correct path to the index.html file within the repository
-        cp ./terraform/app/index.html /var/www/html/
+        cp ./app/index.html /var/www/html/
       working-directory: ${{ github.workspace }}
-
-    - name: Clean Up
-      run: terraform destroy -auto-approve
-      working-directory: ./terraform

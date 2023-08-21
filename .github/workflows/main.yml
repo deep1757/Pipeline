@@ -44,8 +44,8 @@ jobs:
 
     - name: Deploy Application
       run: |
-        mkdir -p /var/www/html
-        cp ./app/index.html /var/www/html/
+        sudo mkdir -p /var/www/html
+        sudo cp ./app/index.html /var/www/html/
       working-directory: ./
 
     - name: Start Web Server

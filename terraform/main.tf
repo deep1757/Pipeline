@@ -23,9 +23,13 @@ resource "aws_security_group" "http_sg" {
   }
 }
 
-resource "aws_network_interface_sg_attachment" "example_sg_attachment" {
-  security_group_id    = aws_security_group.http_sg.id
-  network_interface_id = aws_instance.example.network_interface_ids[0]
+resource "aws_security_group_rule" "instance_ingress" {
+  type        = "ingress"
+  from_port   = 80
+  to_port     = 80
+  protocol    = "tcp"
+  cidr_blocks = ["0.0.0.0/0"] # Allowing traffic from all sources (for demonstration purposes)
+  security_group_id = aws_instance.example.security_groups[0]
 }
 
 output "public_ip" {

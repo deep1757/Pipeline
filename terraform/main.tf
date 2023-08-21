@@ -11,14 +11,13 @@ resource "aws_instance" "example" {
   }
 }
 
-# Allow incoming traffic on port 80 for the default security group
 resource "aws_security_group_rule" "http_ingress" {
   type        = "ingress"
   from_port   = 80
   to_port     = 80
   protocol    = "tcp"
   cidr_blocks = ["0.0.0.0/0"] # Allowing traffic from all sources (for demonstration purposes)
-  security_group_id = aws_instance.example.security_groups[0]
+  security_group_id = aws_instance.example.security_groups[0].id
 }
 
 output "public_ip" {

@@ -44,12 +44,17 @@ jobs:
 
     - name: Deploy Application
       run: |
+        ls -la ./app
         sudo mkdir -p /var/www/html
         sudo cp ./app/index.html /var/www/html/
+        ls -la /var/www/html
       working-directory: ./
+      shell: bash
 
     - name: Start Web Server
       run: |
         sudo apt update && sudo apt install -y apache2
         sudo systemctl start apache2
         sudo systemctl enable apache2
+        sudo systemctl status apache2
+      shell: bash

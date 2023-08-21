@@ -10,20 +10,9 @@ resource "aws_instance" "example" {
     Name = "Terraform CICD"
   }
 
-  security_groups = [aws_security_group.http_sg.name]
+  security_groups = [default]
 }
 
-resource "aws_security_group" "http_sg" {
-  name        = "http-sg"
-  description = "Allow incoming HTTP traffic"
-  
-  ingress {
-    from_port   = 80
-    to_port     = 80
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"] # Allowing traffic from all sources (for demonstration purposes)
-  }
-}
 
 output "public_ip" {
   value = aws_instance.example.public_ip

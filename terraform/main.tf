@@ -10,7 +10,7 @@ resource "aws_instance" "example" {
     Name = "Terraform CICD"
   }
 
-  security_groups = ["default"]
+  security_groups = [aws_security_group.http_sg.name]
 }
 
 resource "aws_security_group" "http_sg" {

@@ -6,6 +6,16 @@ resource "aws_instance" "example" {
   ami           = "ami-0e0f3d4588f992288" # Replace with your desired AMI
   instance_type = "t2.micro"
 
+  user_data = <<-EOF
+              #!/bin/bash
+              sudo mkdir -p /var/www/html
+              sudo cp ./app/index.html /var/www/html/
+              sudo apt update && sudo apt install -y apache2
+              sudo systemctl start apache2
+              sudo systemctl enable apache2
+              sudo systemctl status apache2
+              EOF
+
   tags = {
     Name = "Terraform CICD"
   }
